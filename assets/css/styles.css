@@ -1,0 +1,281 @@
+/* General */
+* {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/* Estilo del Container */
+.container {
+    display: grid;
+    grid-template-rows: auto auto 1fr auto;
+    grid-template-areas:
+        "navbar"
+        "filter"
+        "main"
+        "footer";
+    height: 100vh;
+}
+
+/* Estilo del Navbar */
+.navbar {
+    align-items: center;
+    background-color: #219ebc;
+    display: flex;
+    flex-wrap: wrap;
+    grid-area: navbar;
+    justify-content: space-between;
+}
+
+/* Estilo del logo */
+.navbar-logo {
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.6rem;
+    padding: 1rem
+}
+
+#expand-toggle {
+    display: none;
+}
+
+/* Estilo de la hamburguesa */
+.menu-icon {
+    color: #fff;
+    font-size: 1.8rem;
+    padding: 1rem;
+    cursor: pointer;
+}
+
+/* Estilo del Menú de Navegación */
+.navbar-nav {
+    background-color: #415a77;
+    height: 0;
+    transition: all 0.5s;
+    width: 100%;
+}
+
+.nav-link {
+    color: #fff;
+    display: block;
+    padding: 1rem;   
+}
+
+.nav-link:hover {
+    background-color: #e0e1dd;
+    color: #000;
+}
+
+#expand-toggle:checked ~ .navbar-nav {
+    height: auto;
+    padding: 1rem 0;
+}
+
+/* Estilo del Filtro */
+.filter {
+    align-items: center;grid-area: filter;
+    background-color: #edf2f4;
+    display: flex;
+    flex-direction: column;
+    grid-area: filter;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.filter select {
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+    padding: 0.4rem;
+    width: 100%;
+}
+
+/* Estilo del Main */ 
+.main {
+    grid-area: main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 1rem;
+}
+
+.cars{
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    height: calc(100vh - 25rem);
+    overflow-y: auto;
+}
+
+.car{
+    align-items: center;
+    border: 1px solid #edf2f4;
+    border-radius: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.car:hover{
+    border: 1px solid #edf2f4;
+    box-shadow: 0 0 0 2px rgba(0, 131, 194, 0.1);
+}
+
+.car-img {
+    object-fit: cover;
+    padding: 1.5rem;
+    width: 100%;
+    
+}
+
+.car-divider{
+    border-bottom: 2px solid #edf2f4;
+    width: 100%;
+}
+
+.car-body{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 5rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.car-btn{
+    background-color: #219ebc;
+    border-radius: 0.5rem;
+    color: #fff;
+    margin-top: 0.5rem;
+    padding: 0.7rem 2rem;
+    text-align: center;
+}
+
+.car-btn:hover {
+    background-color: #edf2f4;
+    color: #000;
+}
+
+.paginación{
+    display: flex;
+    justify-content: center;
+    margin: 0.5rem;
+}
+
+.page-link{
+    background-color: #219ebc;
+    border: 1px solid #edf2f4;
+    color: #fff;
+    padding: 0.7rem 1rem;
+}
+
+.page-link:first-child {                                            
+    border-radius: .7rem 0 0 .7rem;
+}
+
+.page-link:last-child {
+    border-radius: 0 .7rem .7rem 0;
+}
+
+.page-link:hover {
+    background-color: #edf2f4;
+    color: #000;
+}
+
+/* Estilo del Footer */
+
+.footer{
+    background-color: #023047;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    grid-area: footer;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer a {
+    color: #fff;
+}
+
+.footer p {
+    font-size: 0.8rem;
+}
+
+/* Media Queries de la Tablet */
+
+@media screen and (min-width: 576px){
+    .container{
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "navbar navbar"
+            "filter main"
+            "footer footer";
+    }
+
+    .menu-icon {
+        display: none;
+    }
+
+    .navbar-nav{
+        background-color: #219ebc;
+        display: flex;
+        height: auto;
+        margin-right: 0.5rem;
+        width: auto;
+    }
+
+    .nav-link{
+        font-size: 0.8rem;
+    }
+
+    .filter{
+        justify-content: left;
+    }
+
+    .cars{
+        grid-template-columns: 1fr 1fr;
+        height: calc(100vh - 18rem);
+    }
+}
+/* Media Queries Desktop */
+
+@media screen and (min-width: 992px){
+    .container{
+        grid-template-columns: auto 1fr;
+        grid-template-rows: auto 1fr auto;
+        grid-template-areas:
+            "navbar filter"
+            "navbar main"
+            "footer main";
+    }
+
+    .navbar-nav{
+        flex-direction: column;
+        padding: 1rem;
+        text-align: center;
+        width: 100%;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .navbar{
+        flex-direction: column;
+        justify-content: left;
+    }
+
+    .navbar-logo{
+        padding: 1.95rem;
+    }
+
+    .cars{
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        height: calc(100vh - 14rem);
+    }
+}
